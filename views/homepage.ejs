@@ -1,3 +1,12 @@
 <h1>DRINK UP!</h1>
 
-<p><%= currentPartialLocals.recipes.name %> </p>
+<div class = "showcases">
+    <p class = "homepage-drink"><%= currentPartialLocals.recipes.name %> </p>
+
+    <div class = "pic-frame">
+        <img  src = <%= currentPartialLocals.recipes.pic %> />
+    </div>
+
+    <button type = "submit" id = "addFav">Add to Favourite</button>
+
+</div>

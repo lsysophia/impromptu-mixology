@@ -5,15 +5,16 @@ console.log(api('sidecar'))
 
 const homepageController = {
     index(req, res, next) {
-        // const cocktailsToShow = ['sidecar', 'whiskey sour', 'amaretto sour', 'manhattan']
-        // cocktailsToShow.forEach((item) => {
-        api('sidecar')
-        .then((recipes) => {
-            res.render('application', {
-                currentPartial: 'homepage',
-                currentPartialLocals: {
-                    recipes,
-                }
+        const cocktailsToShow = ['sidecar', 'whiskey sour', 'amaretto sour', 'manhattan']
+        cocktailsToShow.forEach((item) => {
+            api(item)
+            .then((recipes) => {
+                res.render('application', {
+                    currentPartial: 'homepage',
+                    currentPartialLocals: {
+                        recipes,
+                    }
+                })
             })
         })
     },

@@ -1,12 +1,13 @@
 const db = require("../db/config")
 
 class Recipe {
-    constructor({id, name, ingredients, instruction, pic}) {
+    constructor({id, name, ingredients, instruction, pic, user_id}) {
         this.id = id || null;
         this.name = name;
         this.ingredients = ingredients;
         this.instruction = instruction;
         this.pic = pic;
+        this.user_id = user_id
     }
 
     static getAll() {
@@ -25,9 +26,9 @@ class Recipe {
     save() {
         return db.one(
             `INSERT INTO recipes
-            (name, ingredients, instruction, pic)
+            (name, ingredients, instruction, pic, user_id)
             VALUES
-            ($/name/, $/ingredients/, $/instruction/, $/pic/)
+            ($/name/, $/ingredients/, $/instruction/, $/pic/, $/user_id/)
             RETURNING *`, this
         )
         .then((newRecipe) => Object.assign(this, newRecipe))

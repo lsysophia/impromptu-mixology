@@ -1,0 +1,66 @@
+html {
+    display: flex;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Italiana', serif;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    font-size: 10px;
+    height: 21.5px;
+}
+
+.log-in {
+    font-family: 'Italiana', serif;
+    align-self: center;
+}
+
+.showcases {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pic-frame {
+    height: 430px;
+    width: 232px;
+    background-image: url("impromptu-mixology/public/img/recipe display background.png");
+}
+
+img {
+    height: 425px;
+    width: 256px;
+}
+
+footer {
+    align-self: center;
+}

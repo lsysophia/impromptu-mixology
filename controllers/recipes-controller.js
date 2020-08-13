@@ -17,10 +17,8 @@ const recipesController = {
     show(req, res, next) {
         Recipe.getByName(req.params.name)
         .then((recipe) => {
-            // res.locals.recipe = recipe
-
             res.render('application', {
-                currentPartial: `recipes/show`,
+                currentPartial: 'recipes/show',
                 currentPartialLocals: recipe
             })
             next()
@@ -29,12 +27,12 @@ const recipesController = {
     },
 
     create(req, res, next) {
-        
         new Recipe({
             name: req.body.name,
             ingredients: req.body.ingredients,
             instruction: req.body.instruction,
-            pic: req.body.pic
+            pic: req.body.pic,
+            user_id: req.body.user_id,
         })
         .save()
         .then((recipe) => {
