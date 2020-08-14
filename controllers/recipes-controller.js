@@ -3,15 +3,16 @@ const renderPartial = require('../services/render-partial-helper')
 
 const recipesController = {
     index(req, res, next) {
-        Recipe.getAll()
+        Recipe.getAll(req.user.id)
         .then((recipes) => {
+            console.log(recipes)
             renderPartial(req, res, 'recipes/index', recipes)
         })
         .catch((err) => next(err))
     },
 
     show(req, res, next) {
-        Recipe.getByName(req.params.name)
+        Recipe.getById(req.params.id)
         .then((recipe) => {
             renderPartial(req, res, 'recipes/show', recipe)
             next()
@@ -24,12 +25,18 @@ const recipesController = {
     },
 
     edit(req, res, next) {
-        renderPartial(req, res, 'recipes/edit')
+        Recipe.getById(req.params.id)
+        .then((recipe) => {
+            console.log(recipe)
+            renderPartial(req, res, `recipes/edit`, recipe)
+            next()
+        })
+        .catch((err) => next(err))
     },
 
     create(req, res, next) {
         console.log("LKSJDFLKJSDFLKJSD")
-        console.log(req)
+        console.log(req.body)
         new Recipe({
             name: req.body.name,
             ingredients: req.body.ingredients,
@@ -39,29 +46,30 @@ const recipesController = {
         })
         .save()
         .then((recipe) => {
-            res.redirect(`/user/recipes/${recipe.name}`)
+            res.redirect(`/user/recipes/${recipe.id}`)
         })
         .catch((err) => next(err))
     },
 
     update(req, res, next) {
-        Recipe.getByName(req.params.name)
+        Recipe.getById(req.params.id)
         .then((recipe) => {
+            console.log(recipe)
             return recipe.update(req.body)
         })
         .then((updatedRecipe) => {
-            res.redirect(`/user/recipes/${updatedRecipe.name}`)
+            res.redirect(`/user/recipes/${updatedRecipe.id}`)
         })
         .catch((err) => next(err))
     },
 
     delete(req, res, next) {
-        Recipe.getByName(req.params.name)
+        Recipe.getById(req.params.id)
         .then((recipe) => {
             return recipe.delete()
         })
         .then(() => {
-            res.redirect('/recipes')
+            res.redirect('/user/recipes')
         })
         .catch((err) => next(err))
     },

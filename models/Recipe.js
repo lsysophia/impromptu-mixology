@@ -10,8 +10,8 @@ class Recipe {
         this.user_id = user_id
     }
 
-    static getAll() {
-        return db.manyOrNone('SELECT * FROM recipes JOIN users ON recipes.user_id = users.id WHERE users.id = $/user_id/')
+    static getAll(userId) {
+        return db.manyOrNone('SELECT recipes.* FROM recipes JOIN users ON recipes.user_id = users.id WHERE users.id = $1', userId)
         .then((recipes) => recipes.map((recipe) => new this(recipe)))
     }
 
@@ -20,6 +20,14 @@ class Recipe {
         .then((recipe) => {
             if (recipe) return new this(recipe)
             else throw new Error ('No recipe found')
+        })
+    }
+
+    static getById(id) {
+        return db.oneOrNone('SELECT * FROM recipes WHERE recipes.id = $1', id)
+        .then((recipe) => {
+            if (recipe) return new this(recipe)
+            else throw new Error('No recipe found')
         })
     }
 
@@ -37,18 +45,21 @@ class Recipe {
     update(changes){
         Object.assign(this, changes)
         return db.one(
-            `UPDATE recipes SET
+            `UPDATE recipes 
+            SET
             name = $/name/,
             ingredients = $/ingredients/,
             instruction = $/instruction/,
             pic = $/pic/
+            WHERE
+            id = $/id/
             RETURNING *`, this
         )
         .then((updatedRecipe) => Object.assign(this, updatedRecipe))
     }
 
     delete() {
-        return db.none('DELETE FROM recipes WHERE id = $/id/', this)
+        return db.one('DELETE FROM recipes WHERE id = $/id/', this)
     }
 
 }

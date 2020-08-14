@@ -3,7 +3,7 @@ const renderPartial = (req, res, partial, locals = {}) => {
         currentPartial: partial,
         currentPartialLocals: {
             ...locals,
-            authorized: req.isAuthenticated(),
+            req: req,
         }
     })
 }

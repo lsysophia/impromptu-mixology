@@ -1,8 +1,14 @@
-<div>
-    <p class = "current-drink"><%= currentPartialLocals.name %></p>
+<div class = "single-drink-container">
+    
+    <div class = "single-drink-details">
+        <p class = "title">Cocktail Name: </p> <p><%= currentPartialLocals.name %></p>
 
-    <p class = "ingredients"><%= currentPartialLocals.ingredients %> </p>
+        <p class = "title">Ingredients Needed: </p> <p><%= currentPartialLocals.ingredients %> </p>
 
-    <p class = "instruction"><%= currentPartialLocals.instruction %></p>
+        <p class = "title">Instruction: </p> <p><%= currentPartialLocals.instruction %></p>
 
+        <img src = <%= currentPartialLocals.pic %> />
+    </div>
+
+    <button><a href = "/user/recipes" style="text-decoration: none;">Back to My Cocktails</a></button>
 </div>

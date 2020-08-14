@@ -7,12 +7,12 @@ recipesRouter.post('/', authHelpers.loginRequired, recipesController.create)
 
 recipesRouter.get('/add',authHelpers.loginRequired, recipesController.addNew)
 
-recipesRouter.get('/([a-zA-z]+)', recipesController.show)
+recipesRouter.get('/:id([0-9]+)', authHelpers.loginRequired, recipesController.show)
 
-recipesRouter.get('/([a-zA-z]+)/edit', authHelpers.loginRequired, recipesController.edit)
+recipesRouter.get('/:id([0-9]+)/edit', authHelpers.loginRequired, recipesController.edit)
 
-recipesRouter.put('/([a-zA-z]+)', recipesController.update)
+recipesRouter.put('/:id([0-9]+)', recipesController.update)
 
-recipesRouter.delete('/([a-zA-Z]+)', recipesController.delete)
+recipesRouter.delete('/:id([0-9]+)', recipesController.delete)
 
 module.exports = recipesRouter

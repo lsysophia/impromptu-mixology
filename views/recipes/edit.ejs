@@ -1,11 +1,9 @@
-<div class =  "form">
-    <div class = "edit">
-        <form method = "POST" action = "/user/recipes/<%= recipe.name %>?_method=PUT">
-            <input type = "text" name = "name" value = "<%= recipe.name %>" placeholder = "Name" />
-            <input type = "text" name = "ingredients" value = "<%= recipe.ingredients %>" placeholder = "Ingredients" />
-            <input type = "text" name = "instruction" value = "<%= recipe.instruction %>" placeholder = "Instruction" />
-            <input type = "image" name = "pic" value = "<%= recipe.pic %>" placeholder = "Image" />
-            <input type = "submit" value = "Complete edit"/>
-        </form>
-    </div>
+<div class =  "edit-form">
+    <form class = "edit" method = "POST" action = "/user/recipes/<%= currentPartialLocals.id %>?_method=PUT">
+        <input type = "text" name = "name" value = "<%= currentPartialLocals.name %>" placeholder = "Name" />
+        <input type = "text" name = "ingredients" value = "<%= currentPartialLocals.ingredients %>" placeholder = "Ingredients" />
+        <input type = "text" name = "instruction" value = "<%= currentPartialLocals.instruction %>" placeholder = "Instruction" />
+        <input type = "url" name = "pic" value = "<%= currentPartialLocals.pic %>" placeholder = "Image" />
+        <input type = "submit" value = "Complete edit"/>
+    </form>
 </div>

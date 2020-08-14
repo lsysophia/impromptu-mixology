@@ -6,6 +6,8 @@ html {
 body {
     display: flex;
     width: 100%;
+    font-family: 'Playfair Display', serif;
+    background-image: url('./img/Brown-Vintage-Pattern-Background.jpg');
 }
 
 main {
@@ -17,32 +19,41 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
+    background-image: url('./img/Brown-Vintage-Pattern-Background.jpg')
 }
 
 .nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.logo {
-    font-family: 'Italiana', serif;
-}
-
-form {
-    display: flex;
     align-items: center;
+    font-size: x-large;
+    font-family: 'Italiana', serif;
+    background-color: rgb(22,124,128);
+    color: rgb(233,232,212);
+    height: 100px;
+    text-decoration: none;
 }
+
+.logo, .login-reg, .logout-profile {
+    text-decoration: none;
+    color: rgb(233,232,212)
+}
+
+/* form { */
+    /* display: flex; */
+    /* align-items: center; */
+/* } */
 
 button {
     font-size: 10px;
     height: 21.5px;
 }
 
-.login-register{
-    font-family: 'Italiana', serif;
-    align-self: center;
-}
+/* .login-register{
+    text-decoration: none;
+    color: rgb(233,232,212)
+} */
 
 .showcases {
     display: flex;
@@ -53,7 +64,7 @@ button {
 .pic-frame {
     height: 430px;
     width: 232px;
-    background-image: url("impromptu-mixology/public/img/recipe display background.png");
+    /* background-image: url("impromptu-mixology/public/img/recipe display background.png"); */
 }
 
 img {
@@ -61,6 +72,81 @@ img {
     width: 256px;
 }
 
+.add-form{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
 footer {
-    align-self: center;
+    margin-top: auto;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(22,124,128);
+    color: rgb(233,232,212);
+}
+
+.recipes {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-del {
+    display: flex;
+    align-items: baseline;
+}
+
+.user-auth {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.register, .login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+}
+
+.editlink, .detailslink {
+    text-decoration: none;
+}
+
+.title {
+    font-size: small;
+    color: rgb(139,116,61);
+}
+
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-evenly;
+}
+
+.edit-form {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.edit, .add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 45%;
+}
+
+.add-form {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }

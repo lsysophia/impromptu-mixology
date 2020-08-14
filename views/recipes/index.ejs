@@ -1,5 +1,21 @@
-<div>
-    text
-    <%= currentPartialLocals.recipes %>
+<div class = "recipes">
+    <% Object.keys(currentPartialLocals).forEach((key) => { %>
+        <% if (key != "req") { %>
+            <div class = "recipe-details">
+                <div class = "title">Cocktail Name: </div><div class = "recipe-content"><%= currentPartialLocals[key].name %></div>
+                <!-- <div class = "title">Ingredients Needed: </div><div class = "recipe-content"><%= currentPartialLocals[key].ingredients %></div>
+                <div class = "title">Instruction: </div><div class = "recipe-content"><%= currentPartialLocals[key].instruction %></div> -->
+            </div>
+        <% } %>
 
+        <div class = "edit-del">
+            <button><a href = "/user/recipes/<%= currentPartialLocals[key].id%>" class = "detailslink">Details</a></button>
+
+            <button><a href = "/user/recipes/<%= currentPartialLocals[key].id%>/edit" class = "editlink">Edit</a></button>
+
+            <form class = "delete" method="POST" action = "/user/recipes/<%= currentPartialLocals[key].id%>?_method=DELETE">
+                <button type = "submit" class = "delete">Delete</button>
+            </form>
+        </div>
+    <% }) %>
 </div>
