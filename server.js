@@ -33,6 +33,7 @@ app.use(
         secret: process.env.SECRET_KEY,
         resave: false,
         saveUninitialized: true,
+        cookie: { _expires: 600000 }
     })
 )
 app.use(passport.initialize())
@@ -40,7 +41,7 @@ app.use(passport.session())
 
 app.use('/', homepageRouter)
 app.use('/auth', authRouter)
-app.use('/recipes', recipesRouter)
+app.use('/user/recipes', recipesRouter)
 app.use('/user', userRouter)
 
 app.use('*', (req, res) => {

@@ -11,7 +11,7 @@ class Recipe {
     }
 
     static getAll() {
-        return db.query('SELECT * FROM recipes')
+        return db.manyOrNone('SELECT * FROM recipes JOIN users ON recipes.user_id = users.id WHERE users.id = $/user_id/')
         .then((recipes) => recipes.map((recipe) => new this(recipe)))
     }
 

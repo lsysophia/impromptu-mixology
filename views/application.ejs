@@ -11,16 +11,21 @@
 <body>
     <div class = "container">
         <header>
-                <!-- add condition for if logged in change nav login button to logout? -->
             <nav class = "nav">
-                <p class = "logo">Impromptu Mixology</p>
+                <a href = "/" class = "logo">Impromptu Mixology</a>
                 <form id = "enter-name">
                     <div>
                         <input type="text" name = "searchName" placeholder = "Enter Cocktail Name" />
                     </div>
                     <button type="submit">Search</button>
                 </form>
-                <a href = "/auth/login" class = "log-in">Log-In</a>
+                <% if (currentPartialLocals.authorized) { %> 
+                    <a href = "/auth/logout">Logout</a>
+                <% } else { %> 
+                <div class = "login-register">
+                    <a href = "/auth/login">Log-In </a> <a href = "/user/register">Register</a>
+                </div>
+                <% } %>
             </nav>
 
         </header>
@@ -36,4 +41,5 @@
         </footer>
     </div>
 </body>
+<script src="src/main.js"></script>
 </html>

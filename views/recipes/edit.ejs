@@ -1,6 +1,6 @@
 <div class =  "form">
     <div class = "edit">
-        <form method = "POST" action = "/recipes/<%= recipe.name %>?_method=PUT">
+        <form method = "POST" action = "/user/recipes/<%= recipe.name %>?_method=PUT">
             <input type = "text" name = "name" value = "<%= recipe.name %>" placeholder = "Name" />
             <input type = "text" name = "ingredients" value = "<%= recipe.ingredients %>" placeholder = "Ingredients" />
             <input type = "text" name = "instruction" value = "<%= recipe.instruction %>" placeholder = "Instruction" />

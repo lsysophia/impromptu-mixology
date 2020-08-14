@@ -17,3 +17,6 @@ ALTER TABLE recipes ADD COLUMN drinkid INTEGER;
 ALTER TABLE recipes ADD COLUMN imgurl TEXT;
 
 DROPPED name column, re-add as UNIQUE;
+
+ALTER TABLE recipes RENAME COLUMN imgurl TO pic;
+

@@ -39,7 +39,7 @@ button {
     height: 21.5px;
 }
 
-.log-in {
+.login-register{
     font-family: 'Italiana', serif;
     align-self: center;
 }
@@ -47,7 +47,7 @@ button {
 .showcases {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .pic-frame {

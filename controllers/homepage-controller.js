@@ -1,7 +1,5 @@
 const api = require('../lib/api_data')
-
-console.log('controller test')
-console.log(api('sidecar'))
+const renderPartial = require('../services/render-partial-helper')
 
 const homepageController = {
     index(req, res, next) {
@@ -9,13 +7,9 @@ const homepageController = {
         cocktailsToShow.forEach((item) => {
             api(item)
             .then((recipes) => {
-                res.render('application', {
-                    currentPartial: 'homepage',
-                    currentPartialLocals: {
-                        recipes,
-                    }
-                })
+                renderPartial(req, res, 'homepage', recipes)
             })
+            .catch((err) => next(err))
         })
     },
 }

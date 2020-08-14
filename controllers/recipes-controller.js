@@ -1,15 +1,11 @@
 const Recipe = require('../models/Recipe')
+const renderPartial = require('../services/render-partial-helper')
 
 const recipesController = {
     index(req, res, next) {
         Recipe.getAll()
         .then((recipes) => {
-            res.render('application', {
-                currentPartial: 'recipes/index',
-                currentPartialLocals: {
-                    recipes
-                }
-            })
+            renderPartial(req, res, 'recipes/index', recipes)
         })
         .catch((err) => next(err))
     },
@@ -17,26 +13,33 @@ const recipesController = {
     show(req, res, next) {
         Recipe.getByName(req.params.name)
         .then((recipe) => {
-            res.render('application', {
-                currentPartial: 'recipes/show',
-                currentPartialLocals: recipe
-            })
+            renderPartial(req, res, 'recipes/show', recipe)
             next()
         })
         .catch((err) => next(err))
     },
 
+    addNew(req, res, next) {
+        renderPartial(req, res, 'recipes/add')
+    },
+
+    edit(req, res, next) {
+        renderPartial(req, res, 'recipes/edit')
+    },
+
     create(req, res, next) {
+        console.log("LKSJDFLKJSDFLKJSD")
+        console.log(req)
         new Recipe({
             name: req.body.name,
             ingredients: req.body.ingredients,
             instruction: req.body.instruction,
             pic: req.body.pic,
-            user_id: req.body.user_id,
+            user_id: req.user.id,
         })
         .save()
         .then((recipe) => {
-            res.redirect(`/recipes/${recipe.name}`)
+            res.redirect(`/user/recipes/${recipe.name}`)
         })
         .catch((err) => next(err))
     },
@@ -47,7 +50,7 @@ const recipesController = {
             return recipe.update(req.body)
         })
         .then((updatedRecipe) => {
-            res.redirect(`/recipes/${updatedRecipe.name}`)
+            res.redirect(`/user/recipes/${updatedRecipe.name}`)
         })
         .catch((err) => next(err))
     },

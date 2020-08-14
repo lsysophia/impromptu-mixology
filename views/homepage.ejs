@@ -1,12 +1,17 @@
 <h1>DRINK UP!</h1>
 
 <div class = "showcases">
-    <p class = "homepage-drink"><%= currentPartialLocals.recipes.name %> </p>
+    <p class = "homepage-drink" id="recipe-name"><%= currentPartialLocals.name %> </p>
 
     <div class = "pic-frame">
-        <img  src = <%= currentPartialLocals.recipes.pic %> />
+        <img id="recipe-pic" src = <%= currentPartialLocals.pic %> />
     </div>
 
-    <button type = "submit" id = "addFav">Add to Favourite</button>
+    <p id="recipe-ingredients"><%= currentPartialLocals.ingredients %></p>
+    <p id="recipe-instruction"><%= currentPartialLocals.instruction %></p>
+
+    <% if (currentPartialLocals.authorized) { %>
+        <button id = "addFav">Add to Favourite</button>
+    <% } %>
 
 </div>
