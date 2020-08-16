@@ -75,5 +75,5 @@ GA unit 2 project
     go to localhost:3000 in your browser
     register for a new user and start using the app!
     
-
+    heroku link: https://sophia-li-impromptu-mixology.herokuapp.com/
 
