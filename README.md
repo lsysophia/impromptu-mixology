@@ -20,6 +20,31 @@ GA unit 2 project
     - delete recipes they don't like
     - view individual recipes
 
+    HTTP route architecture (initial planning, final differs a little):
+
+    For users:
+    GET /users/register
+    POST /users/
+    GET /users/:id([0-9]+)
+
+    For recipes:
+    GET /recipes/ - show all
+    GET /recipes/:id([0-9]+) - show by id
+    GET /recipes/add
+    POST /recipes
+    GET /recipes/:id([0-9]+)/edit 
+    PUT /recipes
+    DELETE /recipes
+    
+    For auth:
+    GET /auth/login
+    POST /auth/login
+    GET /auth/logout
+
+    For homepage:
+    GET / -lands on homepage with showcase recipes
+    GET /about
+
     The technologies, APIs, and modules you used and a description of each
 
     Bonus 1: User authentication: using passport
@@ -32,7 +57,6 @@ GA unit 2 project
     2. post data that were initially fetched from 3rd party API to database (allowing user to add a cocktail recipe to as favourite) 
 
     Express JS for server set up, generating views
-
 
     A code snippet of a part of the app you're particularly proud of
 
