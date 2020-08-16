@@ -18,6 +18,9 @@ window.addEventListener('load', () => {
 
         xhr.send(JSON.stringify(addFav));
         xhr.onload = function () {
+            if(xhr.status > 300 && xhr.status < 400) {
+                window.alert("New recipe added to your collection!")
+            }
             console.log(xhr.response)
         }
         xhr.onerror = function () {
@@ -39,13 +42,9 @@ window.addEventListener('load', () => {
         // })
     })
 
+    //allows user to search cocktail by name and get data via API
     document.getElementById('search').addEventListener('click', (event) => {
         event.preventDefault()
-        console.log('shdcshkdhkfshdkfhdskh')
-        // console.log(event.currentTarget)
-        console.log("sldcqmlekoignsdf")
-        // const newName = event.currentTarget
-        // console.log(newName)
         const inputName = document.getElementById('inputName').value
         
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputName}`, {
@@ -55,18 +54,39 @@ window.addEventListener('load', () => {
             },
         })
         .then((response) => {
-            console.log(response.json())
             return response.json()
         })
         .then((parsedRes) => {
             console.log(parsedRes.drinks[0])
+            const foundDrink = parsedRes.drinks[0]
+            const newName = document.getElementById('recipe-name')
+            newName.innerText = foundDrink.strDrink
+
+            const newPic = document.getElementById('recipe-pic')
+            newPic.src = foundDrink.strDrinkThumb
+
+            const foundIngredients = [foundDrink.strMeasure1, foundDrink.strIngredient1,foundDrink.strMeasure2, foundDrink.strIngredient2,foundDrink.strMeasure3, foundDrink.strIngredient3,foundDrink.strMeasure4, foundDrink.strIngredient4,foundDrink.strMeasure5,foundDrink.strIngredient5,
+                foundDrink.strMeasure6, foundDrink.strIngredient6, foundDrink.strMeasure7, foundDrink.strIngredient7,foundDrink.strMeasure8, foundDrink.strIngredient8,foundDrink.strMeasure9, foundDrink.strIngredient9, foundDrink.strMeasure10, foundDrink.strIngredient10,
+                foundDrink.strMeasure11,foundDrink.strIngredient11, foundDrink.strMeasure12, foundDrink.strIngredient12, foundDrink.strMeasure13, foundDrink.strIngredient13, foundDrink.strMeasure14,foundDrink.strIngredient14, foundDrink.strMeasure15,foundDrink.strIngredient15]
+
+            const filteredIngredients = []
+
+            for(i = 0; i < foundIngredients.length; i++) {
+                if (foundIngredients[i]){
+                    filteredIngredients.push(foundIngredients[i])
+                }
+            }
+
+            const newIngredients = document.getElementById('recipe-ingredients')
+            newIngredients.innerText = filteredIngredients.join(' ')
+
+            const newInstruction = document.getElementById('recipe-instruction')
+            newInstruction.innerText = foundDrink.strInstructions
         })
 
     })
 
 }, false)
-
-//will need to link to input from DOM or response from a form in views
 
 
 

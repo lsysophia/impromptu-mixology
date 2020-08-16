@@ -35,8 +35,6 @@ const recipesController = {
     },
 
     create(req, res, next) {
-        console.log("LKSJDFLKJSDFLKJSD")
-        console.log(req.body)
         new Recipe({
             name: req.body.name,
             ingredients: req.body.ingredients,

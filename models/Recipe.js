@@ -59,7 +59,7 @@ class Recipe {
     }
 
     delete() {
-        return db.one('DELETE FROM recipes WHERE id = $/id/', this)
+        return db.none('DELETE FROM recipes WHERE id = $/id/', this)
     }
 
 }
