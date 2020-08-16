@@ -10,7 +10,6 @@ window.addEventListener('load', () => {
             "instruction": document.getElementById("recipe-instruction").innerText,
             "pic": document.getElementById("recipe-pic").src
         }
-        console.log(addFav)
 
         xhr = new XMLHttpRequest()
         xhr.open("POST", "/user/recipes");
@@ -18,7 +17,7 @@ window.addEventListener('load', () => {
 
         xhr.send(JSON.stringify(addFav));
         xhr.onload = function () {
-            if(xhr.status > 300 && xhr.status < 400) {
+            if(xhr.status === 200) {
                 window.alert("New recipe added to your collection!")
             }
             console.log(xhr.response)
@@ -57,7 +56,6 @@ window.addEventListener('load', () => {
             return response.json()
         })
         .then((parsedRes) => {
-            console.log(parsedRes.drinks[0])
             const foundDrink = parsedRes.drinks[0]
             const newName = document.getElementById('recipe-name')
             newName.innerText = foundDrink.strDrink

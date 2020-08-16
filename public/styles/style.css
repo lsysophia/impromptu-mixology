@@ -35,7 +35,7 @@ main {
     text-decoration: none;
 }
 
-.logo, .login-reg, .logout-profile {
+.logo, .login-reg, .logout-profile, .about {
     text-decoration: none;
     color: rgb(233,232,212)
 }

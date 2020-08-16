@@ -1,11 +1,11 @@
-<h1>DRINK UP!</h1>
-
-<form id = "enter-name">
-    <div>
-        <input type="text" name = "searchName" id = "inputName" placeholder = "Enter Cocktail Name" />
-    </div>
-    <button type="submit" id = "search">Search</button>
-</form>
+<% if (currentPartialLocals.req.isAuthenticated()) { %>
+    <form id = "enter-name">
+        <div>
+            <input type="text" name = "searchName" id = "inputName" placeholder = "Enter Cocktail Name" />
+        </div>
+        <button type="submit" id = "search">Search</button>
+    </form>
+<% } %>
 
 <div class = "showcases">
     <p class = "homepage-drink" id="recipe-name"><%= currentPartialLocals.name %> </p>

@@ -38,7 +38,7 @@ GA unit 2 project
 
     One thing I deviated from what's taught in class is that instead of making partial views of boilerplate and footer, I made a partial render helper file to help pass any dynamic information between views. Essentially making the header and footer constant and changing out the body. I decided to give this a try because during the to-do app hw, I ran into the issue of not being able to render the logo image when page loads since nav was on a separate view that was included in the boilerplate. This method seems to be working, and it allows me to update the header dynamically since I was able to pass whether the login is authenticated through the req in the render partial helper. 
 
-    This also allows me to render the views inside the controller, instead of including some in controller some in the router. That was a bit confusing for me..
+    This also allows me to render almost all the views inside the controller, one or two in the router, instead of including some in controller some in the router. That was a bit confusing for me..
 
     Any things you plan to fix or features you plan to add
 
@@ -49,6 +49,7 @@ GA unit 2 project
     create new database and run migration files in psql to create databases
     npm run dev
     go to localhost:3000 in your browser
+    register for a new user and start using the app!
     
 
 

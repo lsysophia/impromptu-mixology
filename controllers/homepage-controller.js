@@ -12,6 +12,10 @@ const homepageController = {
             .catch((err) => next(err))
         })
     },
+
+    about(req, res, next) {
+        renderPartial(req, res, 'about')
+    },
 }
 
 module.exports = homepageController
