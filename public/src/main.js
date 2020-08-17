@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
             return response.json()
         })
         .then((parsedRes) => {
-            if (!parsedRes.drink) {
+            if (!parsedRes.drinks) {
                 alert('This drink is not available! Make your own recipe!')
             } 
             else {
