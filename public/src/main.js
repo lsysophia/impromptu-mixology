@@ -56,30 +56,35 @@ window.addEventListener('load', () => {
             return response.json()
         })
         .then((parsedRes) => {
-            const foundDrink = parsedRes.drinks[0]
-            const newName = document.getElementById('recipe-name')
-            newName.innerText = foundDrink.strDrink
+            if (!parsedRes.drink) {
+                alert('This drink is not available! Make your own recipe!')
+            } 
+            else {
+                const foundDrink = parsedRes.drinks[0]
+                const newName = document.getElementById('recipe-name')
+                newName.innerText = foundDrink.strDrink
 
-            const newPic = document.getElementById('recipe-pic')
-            newPic.src = foundDrink.strDrinkThumb
+                const newPic = document.getElementById('recipe-pic')
+                newPic.src = foundDrink.strDrinkThumb
 
-            const foundIngredients = [foundDrink.strMeasure1, foundDrink.strIngredient1,foundDrink.strMeasure2, foundDrink.strIngredient2,foundDrink.strMeasure3, foundDrink.strIngredient3,foundDrink.strMeasure4, foundDrink.strIngredient4,foundDrink.strMeasure5,foundDrink.strIngredient5,
-                foundDrink.strMeasure6, foundDrink.strIngredient6, foundDrink.strMeasure7, foundDrink.strIngredient7,foundDrink.strMeasure8, foundDrink.strIngredient8,foundDrink.strMeasure9, foundDrink.strIngredient9, foundDrink.strMeasure10, foundDrink.strIngredient10,
-                foundDrink.strMeasure11,foundDrink.strIngredient11, foundDrink.strMeasure12, foundDrink.strIngredient12, foundDrink.strMeasure13, foundDrink.strIngredient13, foundDrink.strMeasure14,foundDrink.strIngredient14, foundDrink.strMeasure15,foundDrink.strIngredient15]
+                const foundIngredients = [foundDrink.strMeasure1, foundDrink.strIngredient1,foundDrink.strMeasure2, foundDrink.strIngredient2,foundDrink.strMeasure3, foundDrink.strIngredient3,foundDrink.strMeasure4, foundDrink.strIngredient4,foundDrink.strMeasure5,foundDrink.strIngredient5,
+                    foundDrink.strMeasure6, foundDrink.strIngredient6, foundDrink.strMeasure7, foundDrink.strIngredient7,foundDrink.strMeasure8, foundDrink.strIngredient8,foundDrink.strMeasure9, foundDrink.strIngredient9, foundDrink.strMeasure10, foundDrink.strIngredient10,
+                    foundDrink.strMeasure11,foundDrink.strIngredient11, foundDrink.strMeasure12, foundDrink.strIngredient12, foundDrink.strMeasure13, foundDrink.strIngredient13, foundDrink.strMeasure14,foundDrink.strIngredient14, foundDrink.strMeasure15,foundDrink.strIngredient15]
 
-            const filteredIngredients = []
+                const filteredIngredients = []
 
-            for(i = 0; i < foundIngredients.length; i++) {
-                if (foundIngredients[i]){
-                    filteredIngredients.push(foundIngredients[i])
+                for(i = 0; i < foundIngredients.length; i++) {
+                    if (foundIngredients[i]){
+                        filteredIngredients.push(foundIngredients[i])
+                    }
                 }
+
+                const newIngredients = document.getElementById('recipe-ingredients')
+                newIngredients.innerText = filteredIngredients.join(' ')
+
+                const newInstruction = document.getElementById('recipe-instruction')
+                newInstruction.innerText = foundDrink.strInstructions
             }
-
-            const newIngredients = document.getElementById('recipe-ingredients')
-            newIngredients.innerText = filteredIngredients.join(' ')
-
-            const newInstruction = document.getElementById('recipe-instruction')
-            newInstruction.innerText = foundDrink.strInstructions
         })
 
     })
